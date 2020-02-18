@@ -12,6 +12,8 @@ Greatest_Profit_Gain = 0
 Greatest_Profit_Loss = 0
 Profit_Loss = []
 Changes = []
+Months = []
+Month_Change = {}
 
 # Read CSV
 with open(csvpath, newline="") as csvfile:
@@ -41,10 +43,15 @@ with open(csvpath, newline="") as csvfile:
             MonthB = int(Profit_Loss[x+1])
             monthly_change = MonthB - MonthA
         Changes.append(monthly_change)
+
+        #add each month to the list
+        Month_Entry = row[0]
+        Months.append(Month_Entry)
     # Calculate average change in profit and loss for all months
     Changes_Sum = sum(Changes)
     Average_Change = Changes_Sum/len(Profit_Loss)
 
+    # Find max profit and max loss
     Greatest_Profit_Gain = max(Changes)
     Greatest_Profit_Loss = min(Changes)
 
@@ -58,3 +65,7 @@ with open(csvpath, newline="") as csvfile:
     print(f"Greatest Increase in Profits: {Greatest_Profit_Gain}")
     print(f"Greatest Decrease in Profits: {Greatest_Profit_Loss}")
     print("----------------------------")
+
+# Write to txt file
+Report = open(w 'Report.txt', "Access_Mode")
+Report.write("  Financial Analysis")
