@@ -32,7 +32,8 @@ with open(csvpath, newline="") as csvfile:
         amount = row[1]
         Profit_Loss.append(amount)
 
-    for x in range(0, len(Profit_Loss[-1])):
+    # Calculate change in profit and loss for each month
+    for x in range(0, len(Profit_Loss)-1):
         if x+1 == "":
             monthly_change = 0
         else:
@@ -40,28 +41,20 @@ with open(csvpath, newline="") as csvfile:
             MonthB = int(Profit_Loss[x+1])
             monthly_change = MonthB - MonthA
         Changes.append(monthly_change)
-    print(Profit_Loss)
-    print(Changes)
+    # Calculate average change in profit and loss for all months
+    Changes_Sum = sum(Changes)
+    Average_Change = Changes_Sum/len(Profit_Loss)
 
-    #     # Find greatest increase/decrease in profit/loss
-    #     # Add all profit/loss amounts to list
-    #     MonthA = row[1]
-    #     MonthB = row[1]
-    #     monthly_change = MonthA - MonthB
-    #     Changes.append(monthly_change)
-    #     # Find average change
-    #    # Average_Change = 
-
-    # Greatest_Profit_Gain = max(Profit_Loss)
-    # Greatest_Profit_Loss = min(Profit_Loss)
+    Greatest_Profit_Gain = max(Changes)
+    Greatest_Profit_Loss = min(Changes)
 
 
     # Print out report:
-    # print("  Financial Analysis")
-    # print("----------------------------")
-    # print(f"Total Number of Months: ${Number_Months}")
-    # print(f"Total Amount: ${Net_Total}")
-    # print(f"Average Change: {Average_Change}")
-    # print(f"Greatest Increase in Profits: {Greatest_Profit_Gain}")
-    # print(f"Greatest Decrease in Profits: {Greatest_Profit_Loss}")
-    # print("----------------------------")
+    print("  Financial Analysis")
+    print("----------------------------")
+    print(f"Total Number of Months: ${Number_Months}")
+    print(f"Total Amount: ${Net_Total}")
+    print(f"Average Change: {Average_Change}")
+    print(f"Greatest Increase in Profits: {Greatest_Profit_Gain}")
+    print(f"Greatest Decrease in Profits: {Greatest_Profit_Loss}")
+    print("----------------------------")
