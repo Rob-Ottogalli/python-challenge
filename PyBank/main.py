@@ -11,6 +11,7 @@ Average_Change = 0
 Greatest_Profit_Gain = 0
 Greatest_Profit_Loss = 0
 Profit_Loss = []
+Changes = []
 
 # Read CSV
 with open(csvpath, newline="") as csvfile:
@@ -27,15 +28,19 @@ with open(csvpath, newline="") as csvfile:
         # Find total amount of profits/losses
         Net_Total = Net_Total + int(row[1])
 
-        # Find average change
-        Average_Change = Net_Total / Number_Months
+    for x in 
 
         # Find greatest increase/decrease in profit/loss
         # Add all profit/loss amounts to list
-        amount = row[1]
-        Profit_Loss.append(amount)
-        Greatest_Profit_Gain = max(Profit_Loss)
-        Greatest_Profit_Loss = min(Profit_Loss)
+        MonthA = row[1]
+        MonthB = row[1]
+        monthly_change = MonthA - MonthB
+        Changes.append(monthly_change)
+        # Find average change
+       # Average_Change = 
+
+    Greatest_Profit_Gain = max(Profit_Loss)
+    Greatest_Profit_Loss = min(Profit_Loss)
 
 
     # Print out report:
