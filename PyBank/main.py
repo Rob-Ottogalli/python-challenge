@@ -49,7 +49,7 @@ with open(csvpath, newline="") as csvfile:
         Months.append(Month_Entry)
     # Calculate average change in profit and loss for all months
     Changes_Sum = sum(Changes)
-    Average_Change = Changes_Sum/len(Profit_Loss)
+    Average_Change = Changes_Sum/(len(Profit_Loss)-1)
 
     # Find max profit and max loss
     Greatest_Profit_Gain = max(Changes)
@@ -66,6 +66,6 @@ with open(csvpath, newline="") as csvfile:
     print(f"Greatest Decrease in Profits: {Greatest_Profit_Loss}")
     print("----------------------------")
 
-# Write to txt file
-Report = open(w 'Report.txt', "Access_Mode")
-Report.write("  Financial Analysis")
+# # Write to txt file
+# Report = open(w 'Report.txt', "Access_Mode")
+# Report.write("  Financial Analysis")
