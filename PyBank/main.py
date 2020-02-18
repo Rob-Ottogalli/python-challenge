@@ -28,27 +28,40 @@ with open(csvpath, newline="") as csvfile:
         # Find total amount of profits/losses
         Net_Total = Net_Total + int(row[1])
 
-    for x in 
+        # Add each row to list of Profit Loss
+        amount = row[1]
+        Profit_Loss.append(amount)
 
-        # Find greatest increase/decrease in profit/loss
-        # Add all profit/loss amounts to list
-        MonthA = row[1]
-        MonthB = row[1]
-        monthly_change = MonthA - MonthB
+    for x in range(0, len(Profit_Loss[-1])):
+        if x+1 == "":
+            monthly_change = 0
+        else:
+            MonthA = int(Profit_Loss[x])
+            MonthB = int(Profit_Loss[x+1])
+            monthly_change = MonthB - MonthA
         Changes.append(monthly_change)
-        # Find average change
-       # Average_Change = 
+    print(Profit_Loss)
+    print(Changes)
 
-    Greatest_Profit_Gain = max(Profit_Loss)
-    Greatest_Profit_Loss = min(Profit_Loss)
+    #     # Find greatest increase/decrease in profit/loss
+    #     # Add all profit/loss amounts to list
+    #     MonthA = row[1]
+    #     MonthB = row[1]
+    #     monthly_change = MonthA - MonthB
+    #     Changes.append(monthly_change)
+    #     # Find average change
+    #    # Average_Change = 
+
+    # Greatest_Profit_Gain = max(Profit_Loss)
+    # Greatest_Profit_Loss = min(Profit_Loss)
 
 
     # Print out report:
-    print("  Financial Analysis")
-    print("----------------------------")
-    print(f"Total Number of Months: ${Number_Months}")
-    print(f"Total Amount: ${Net_Total}")
-    print(f"Average Change: {Average_Change}")
-    print(f"Greatest Increase in Profits: {Greatest_Profit_Gain}")
-    print(f"Greatest Decrease in Profits: {Greatest_Profit_Loss}")
-    print("----------------------------")
+    # print("  Financial Analysis")
+    # print("----------------------------")
+    # print(f"Total Number of Months: ${Number_Months}")
+    # print(f"Total Amount: ${Net_Total}")
+    # print(f"Average Change: {Average_Change}")
+    # print(f"Greatest Increase in Profits: {Greatest_Profit_Gain}")
+    # print(f"Greatest Decrease in Profits: {Greatest_Profit_Loss}")
+    # print("----------------------------")
