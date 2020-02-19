@@ -93,4 +93,5 @@ with open("Financial Report.txt", "w") as csvwrite:
             f"{Rep_Net_Total}\n"
             f"{Rep_Avg_Change}\n"
             f"{Rep_Inc_Profits}\n"
-            f"{Rep_Dec_Profits}\n")
+            f"{Rep_Dec_Profits}\n"
+            f"{Rep_Dash}\n")
