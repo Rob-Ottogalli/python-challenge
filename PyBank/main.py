@@ -13,7 +13,6 @@ Greatest_Profit_Loss = 0
 Profit_Loss = []
 Changes = []
 Months = []
-Month_Change = {}
 
 # Read CSV
 with open(csvpath, newline="") as csvfile:
