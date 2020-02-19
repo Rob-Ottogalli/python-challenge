@@ -50,29 +50,33 @@ with open(csvpath, newline="") as csvfile:
     # Calculate average change in profit and loss for all months
     Changes_Sum = sum(Changes)
     Average_Change = Changes_Sum/(len(Profit_Loss)-1)
+    Average_Change = round(Average_Change, 2)
 
     # Find max profit and max loss
     Greatest_Profit_Gain = max(Changes)
     Greatest_Profit_Loss = min(Changes)
 
-    #List strings for report:
-    Rep_Header = "Financial Analysis"
-    Rep_Dash = "----------------------------"
-    Rep_Months = f"Total Number of Months: ${Number_Months}"
-    Rep_Net_Total = f"Total Amount: ${Net_Total}"
-    Rep_Avg_Change = f"Average Change: ${Average_Change}"
-    Rep_Inc_Profits = f"Greatest Increase in Profits: ${Greatest_Profit_Gain}"
-    Rep_Dec_Profits = f"Greatest Decrease in Profits: ${Greatest_Profit_Loss}"
+    # Find month of max profit and max loss
     
-    # Print report to Terminal:
-    print(Rep_Header)
-    print(Rep_Dash)
-    print(Rep_Months)
-    print(Rep_Net_Total)
-    print(Rep_Avg_Change)
-    print(Rep_Inc_Profits)
-    print(Rep_Dec_Profits)
-    print(Rep_Dash)
+
+#List strings for report:
+Rep_Header = "Financial Analysis"
+Rep_Dash = "----------------------------"
+Rep_Months = f"Total Number of Months: ${Number_Months}"
+Rep_Net_Total = f"Total Amount: ${Net_Total}"
+Rep_Avg_Change = f"Average Change: ${Average_Change}"
+Rep_Inc_Profits = f"Greatest Increase in Profits: ${Greatest_Profit_Gain}"
+Rep_Dec_Profits = f"Greatest Decrease in Profits: ${Greatest_Profit_Loss}"
+
+# Print report to Terminal:
+print(Rep_Header)
+print(Rep_Dash)
+print(Rep_Months)
+print(Rep_Net_Total)
+print(Rep_Avg_Change)
+print(Rep_Inc_Profits)
+print(Rep_Dec_Profits)
+print(Rep_Dash)
 
 # Write report to txt file
 with open("Financial Report.txt", "w") as csvwrite:
