@@ -69,7 +69,7 @@ with open(csvpath, newline="") as csvfile:
 #List strings for report:
 Rep_Header = "Financial Analysis"
 Rep_Dash = "----------------------------"
-Rep_Months = f"Total Number of Months: ${Number_Months}"
+Rep_Months = f"Total Number of Months: {Number_Months}"
 Rep_Net_Total = f"Total Amount: ${Net_Total}"
 Rep_Avg_Change = f"Average Change: ${Average_Change}"
 Rep_Inc_Profits = f"Greatest Increase in Profits: {Month_Max_Change} (${Greatest_Profit_Gain})"
