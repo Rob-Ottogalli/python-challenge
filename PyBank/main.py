@@ -47,6 +47,10 @@ with open(csvpath, newline="") as csvfile:
         #add each month to the list
         Month_Entry = row[0]
         Months.append(Month_Entry)
+
+        # Create dictionary, where Month is the key, and Change in profit is the value
+        Month_Change.update({row[0] : monthly_change})
+
     # Calculate average change in profit and loss for all months
     Changes_Sum = sum(Changes)
     Average_Change = Changes_Sum/(len(Profit_Loss)-1)
@@ -57,36 +61,43 @@ with open(csvpath, newline="") as csvfile:
     Greatest_Profit_Loss = min(Changes)
 
     # Find month of max profit and max loss
+    # Find index of max profit in list of Changes
+    Ind_Max = Changes.index(Greatest_Profit_Gain)
+    Month_Max_Change = Months[24]
+    Ind_Min = Changes.index(Greatest_Profit_Loss)
+    Month_Min_Change = Months[43]
+    print(f"Index: {Ind_Max}; Month: {Month_Max_Change}; Change: {Greatest_Profit_Gain}")
+    print(f"Index: {Ind_Min}; Month: {Month_Min_Change}; Change: {Greatest_Profit_Loss}")
     
 
-#List strings for report:
-Rep_Header = "Financial Analysis"
-Rep_Dash = "----------------------------"
-Rep_Months = f"Total Number of Months: ${Number_Months}"
-Rep_Net_Total = f"Total Amount: ${Net_Total}"
-Rep_Avg_Change = f"Average Change: ${Average_Change}"
-Rep_Inc_Profits = f"Greatest Increase in Profits: ${Greatest_Profit_Gain}"
-Rep_Dec_Profits = f"Greatest Decrease in Profits: ${Greatest_Profit_Loss}"
+# #List strings for report:
+# Rep_Header = "Financial Analysis"
+# Rep_Dash = "----------------------------"
+# Rep_Months = f"Total Number of Months: ${Number_Months}"
+# Rep_Net_Total = f"Total Amount: ${Net_Total}"
+# Rep_Avg_Change = f"Average Change: ${Average_Change}"
+# Rep_Inc_Profits = f"Greatest Increase in Profits: ${Greatest_Profit_Gain}"
+# Rep_Dec_Profits = f"Greatest Decrease in Profits: ${Greatest_Profit_Loss}"
 
-# Print report to Terminal:
-print(Rep_Header)
-print(Rep_Dash)
-print(Rep_Months)
-print(Rep_Net_Total)
-print(Rep_Avg_Change)
-print(Rep_Inc_Profits)
-print(Rep_Dec_Profits)
-print(Rep_Dash)
+# # Print report to Terminal:
+# print(Rep_Header)
+# print(Rep_Dash)
+# print(Rep_Months)
+# print(Rep_Net_Total)
+# print(Rep_Avg_Change)
+# print(Rep_Inc_Profits)
+# print(Rep_Dec_Profits)
+# print(Rep_Dash)
 
-# Write report to txt file
-with open("Financial Report.txt", "w") as csvwrite:
-    csvwrite.write(f"{Rep_Header}\n"
-            f"{Rep_Dash}\n"
-            f"{Rep_Months}\n"
-            f"{Rep_Net_Total}\n"
-            f"{Rep_Avg_Change}\n"
-            f"{Rep_Inc_Profits}\n"
-            f"{Rep_Dec_Profits}\n")
+# # Write report to txt file
+# with open("Financial Report.txt", "w") as csvwrite:
+#     csvwrite.write(f"{Rep_Header}\n"
+#             f"{Rep_Dash}\n"
+#             f"{Rep_Months}\n"
+#             f"{Rep_Net_Total}\n"
+#             f"{Rep_Avg_Change}\n"
+#             f"{Rep_Inc_Profits}\n"
+#             f"{Rep_Dec_Profits}\n")
 
 # # Suggestion from Geoff
 # def testMySum():
