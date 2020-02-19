@@ -55,17 +55,38 @@ with open(csvpath, newline="") as csvfile:
     Greatest_Profit_Gain = max(Changes)
     Greatest_Profit_Loss = min(Changes)
 
+    #List strings for report:
+    Rep_Header = "Financial Analysis"
+    Rep_Dash = "----------------------------"
+    Rep_Months = f"Total Number of Months: ${Number_Months}"
+    Rep_Net_Total = f"Total Amount: ${Net_Total}"
+    Rep_Avg_Change = f"Average Change: ${Average_Change}"
+    Rep_Inc_Profits = f"Greatest Increase in Profits: ${Greatest_Profit_Gain}"
+    Rep_Dec_Profits = f"Greatest Decrease in Profits: ${Greatest_Profit_Loss}"
+    
+    # Print report to Terminal:
+    print(Rep_Header)
+    print(Rep_Dash)
+    print(Rep_Months)
+    print(Rep_Net_Total)
+    print(Rep_Avg_Change)
+    print(Rep_Inc_Profits)
+    print(Rep_Dec_Profits)
+    print(Rep_Dash)
 
-    # Print out report:
-    print("  Financial Analysis")
-    print("----------------------------")
-    print(f"Total Number of Months: ${Number_Months}")
-    print(f"Total Amount: ${Net_Total}")
-    print(f"Average Change: {Average_Change}")
-    print(f"Greatest Increase in Profits: {Greatest_Profit_Gain}")
-    print(f"Greatest Decrease in Profits: {Greatest_Profit_Loss}")
-    print("----------------------------")
+# Write report to txt file
+with open("Financial Report.txt", "w") as csvwrite:
+    csvwrite.write(f"{Rep_Header}\n"
+            f"{Rep_Dash}\n"
+            f"{Rep_Months}\n"
+            f"{Rep_Net_Total}\n"
+            f"{Rep_Avg_Change}\n"
+            f"{Rep_Inc_Profits}\n"
+            f"{Rep_Dec_Profits}\n")
 
-# # Write to txt file
-# Report = open(w 'Report.txt', "Access_Mode")
-# Report.write("  Financial Analysis")
+# # Suggestion from Geoff
+# def testMySum():
+#   assert mySum([1,2,3,4,5]) == 15
+# def mySum(iterable):
+#   pass
+# testMySum()
