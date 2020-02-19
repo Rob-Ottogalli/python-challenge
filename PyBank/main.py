@@ -94,10 +94,3 @@ with open("Financial Report.txt", "w") as csvwrite:
             f"{Rep_Avg_Change}\n"
             f"{Rep_Inc_Profits}\n"
             f"{Rep_Dec_Profits}\n")
-
-# # Suggestion from Geoff
-# def testMySum():
-#   assert mySum([1,2,3,4,5]) == 15
-# def mySum(iterable):
-#   pass
-# testMySum()
