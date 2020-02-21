@@ -2,16 +2,13 @@ import os
 import csv
 
 # Path to collect data from the Resources folder
-csvpath = os.path.join('Resources', 'election_data.csv')
+csvpath = os.path.join('Resources', 'election_test.csv')
 
 # Initialize variables to hold data
 Total_Votes = 0
 Candidates = []
 Candidate1 = ""
 Candidate2 = ""
-Candidate3 = ""
-Candidate4 = ""
-
 
 
 # Read CSV
@@ -26,18 +23,12 @@ with open(csvpath, newline="") as csvfile:
         if row[0] != 0:
             Total_Votes = Total_Votes + 1
 
-    # Loop through data
-    # for row in election_csv:
-        # find discrete candidates
-        Candidate1 = row[2]
-        if row[2] != Candidate1 or row[2] != Candidate2:
-            Candidate3 = row[2]
-        if row[2] != Candidate1:
-            Candidate2 = row[2]
+        # Find unique Candidates.  Append to list
+        if str(row[2]) not in Candidates:
+            Candidates.append(str(row[2])) 
+    Num_Cand = len(Candidates)
 
 
 print(Total_Votes)
-print(Candidate1)
-print(Candidate2)
-print(Candidate3)
-print(Candidate4)
+print(Candidates)
+print(Num_Cand)
