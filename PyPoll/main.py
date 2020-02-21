@@ -26,7 +26,10 @@ with open(csvpath, newline="") as csvfile:
         # Find unique Candidates.  Append to list
         if str(row[2]) not in Candidates:
             Candidates.append(str(row[2])) 
+
+   # Find number of Candidates
     Num_Cand = len(Candidates)
+
 
 
 print(Total_Votes)
