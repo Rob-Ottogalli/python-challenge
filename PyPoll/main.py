@@ -24,16 +24,16 @@ Candidate_Votes = 0
 # TEst here
 def Vote_Tally(candidate):
     Candidate_Votes = 0
-    candidate = "Khan"
+    candidate = Candidates[x]
     for row in election_csv:
         # candidate = Candidates[0]
-        if row[2] == "Khan":
+        if row[2] == Candidates[x]:
             Candidate_Votes = Candidate_Votes + 1
         # x = candidate
     y = Candidate_Votes
-    Final_Count.update(Khan = y)
-    print(Final_Count)
-    print(Candidate_Votes)
+    Final_Count.update([(candidate, y)])
+    # print(Final_Count)
+    # print(Candidate_Votes)
 
 
 # Read CSV
@@ -52,17 +52,30 @@ with open(csvpath, newline="") as csvfile:
         if str(row[2]) not in Candidates:
             Candidates.append(str(row[2])) 
 
-        for x in range(0, len(Candidates)):
-                if row[2] == Candidates[x]:
-                    Candidate_Votes = Candidate_Votes + 1
-                y = Candidate_Votes
-                Final_Count.update(Khan = y)
-
    # Find number of Candidates
     Num_Cand = len(Candidates)
 
     # print(Vote_Tally(Candidates[0]))
 
+for x in range(0, Num_Cand):
+    Cand = Candidates[x]
+
+# Read CSV
+with open(csvpath, newline="") as csvfile:
+    election_csv = csv.reader(csvfile, delimiter=",")
+
+    # Code works - finds correct count
+    # for x in range(0, Num_Cand):
+    #     for row in election_csv:
+    #         if row[2] == Cand:
+    #             Candidate_Votes = Candidate_Votes + 1
+    #             j = Candidates[x]
+    #             y = Candidate_Votes
+    #             Final_Count.update(j = y)
+    for x in range(0, Num_Cand):
+        candidate = Candidates[x]
+        count = Vote_Tally(Candidates[x])
+        # Final_Count.update( = count)
 
 
 print(f"Total Votes = {Total_Votes}")
