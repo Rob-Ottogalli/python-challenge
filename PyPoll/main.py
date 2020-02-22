@@ -10,16 +10,27 @@ Candidates = []
 Final_Count = {}
 
 # Define function for counting a candidates number of votes
-def Vote_Tally(candidate):
+# def Vote_Tally(candidate):
+#     Candidate_Votes = 0
+#     for row in election_csv:
+#         candidate = Candidates[0]
+#         if row[2] == candidate:
+#             Candidate_Votes = Candidate_Votes + 1
+#     print(Candidate_Votes)
+#     Final_Count.update(candidate = Candidate_Votes)
+#     print(Final_Count)
+
+# TEst here
+def Vote_Tally(x):
     Candidate_Votes = 0
     for row in election_csv:
         candidate = Candidates[0]
-        if row[2] == candidate:
+        if row[2] == Candidates[0]:
             Candidate_Votes = Candidate_Votes + 1
-    print(Candidate_Votes)
-    Final_Count.update(candidate = Candidate_Votes)
+        x = candidate
+    y = Candidate_Votes
+    Final_Count.update(Khan = Candidate_Votes)
     print(Final_Count)
-
 
 
 # Read CSV
