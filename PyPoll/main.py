@@ -8,6 +8,7 @@ csvpath = os.path.join('Resources', 'election_test.csv')
 Total_Votes = 0
 Candidates = []
 Final_Count = {}
+Candidate_Votes = 0
 
 # Define function for counting a candidates number of votes
 # def Vote_Tally(candidate):
@@ -21,16 +22,18 @@ Final_Count = {}
 #     print(Final_Count)
 
 # TEst here
-def Vote_Tally(x):
+def Vote_Tally(candidate):
     Candidate_Votes = 0
+    candidate = "Khan"
     for row in election_csv:
-        candidate = Candidates[0]
-        if row[2] == Candidates[0]:
+        # candidate = Candidates[0]
+        if row[2] == "Khan":
             Candidate_Votes = Candidate_Votes + 1
-        x = candidate
+        # x = candidate
     y = Candidate_Votes
-    Final_Count.update(Khan = Candidate_Votes)
+    Final_Count.update(Khan = y)
     print(Final_Count)
+    print(Candidate_Votes)
 
 
 # Read CSV
@@ -49,14 +52,20 @@ with open(csvpath, newline="") as csvfile:
         if str(row[2]) not in Candidates:
             Candidates.append(str(row[2])) 
 
+        for x in range(0, len(Candidates)):
+                if row[2] == Candidates[x]:
+                    Candidate_Votes = Candidate_Votes + 1
+                y = Candidate_Votes
+                Final_Count.update(Khan = y)
+
    # Find number of Candidates
     Num_Cand = len(Candidates)
 
-    print(Vote_Tally(Candidates[0]))
+    # print(Vote_Tally(Candidates[0]))
 
 
 
-print(Total_Votes)
+print(f"Total Votes = {Total_Votes}")
 print(Candidates)
-print(Num_Cand)
-print(Candidates[0])
+print(f"Number of Candidates: {Num_Cand}")
+print(Final_Count)
