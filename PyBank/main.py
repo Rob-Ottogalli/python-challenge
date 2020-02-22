@@ -58,11 +58,12 @@ with open(csvpath, newline="") as csvfile:
     Greatest_Profit_Loss = min(Changes)
 
     # Find month of max profit and max loss
-    # Find index of max profit in list of Changes; find corresponding month in Months list
+    # Find positions (index) of max profit and max losses in list of Changes
     Ind_Max = Changes.index(Greatest_Profit_Gain)
-    Month_Max_Change = Months[Ind_Max+1]
-    # Find index of max loss in list of Changes; find corresponding month in Months list
     Ind_Min = Changes.index(Greatest_Profit_Loss)
+    
+    # Find corresponding month in Months list
+    Month_Max_Change = Months[Ind_Max+1]
     Month_Min_Change = Months[Ind_Min+1]
     
 
