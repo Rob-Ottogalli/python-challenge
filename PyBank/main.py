@@ -23,7 +23,7 @@ with open(csvpath, newline="") as csvfile:
     # Loop through data
     for row in budget_csv:
         # Find total number of months
-        if row[0] != 0:
+        if row[0] != "":  #if row is not empty
             Number_Months = Number_Months + 1
 
         # Find total amount of profits/losses

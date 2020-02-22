@@ -7,8 +7,19 @@ csvpath = os.path.join('Resources', 'election_test.csv')
 # Initialize variables to hold data
 Total_Votes = 0
 Candidates = []
-Candidate1 = ""
-Candidate2 = ""
+Candidate_Votes = 0
+Final_Count = {}
+
+# Define function for counting a candidates number of votes
+def Vote_Tally(candidate, x):
+    for row in election_csv:
+        candidate = Candidates[x]
+        if row[2] == candidate:
+            Candidate_Votes = Candidate_Votes + 1
+    print(Candidate_Votes)
+    Final_Count.update(candidate = Candidate_Votes)
+    print(Final_Count)
+
 
 
 # Read CSV
