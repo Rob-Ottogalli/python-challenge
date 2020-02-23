@@ -10,27 +10,17 @@ Candidates = []
 Final_Count = {}
 Candidate_Votes = 0
 
-# Define function for counting a candidates number of votes
-# def Vote_Tally(candidate):
-#     Candidate_Votes = 0
-#     for row in election_csv:
-#         candidate = Candidates[0]
-#         if row[2] == candidate:
-#             Candidate_Votes = Candidate_Votes + 1
-#     print(Candidate_Votes)
-#     Final_Count.update(candidate = Candidate_Votes)
-#     print(Final_Count)
-
 # Vote Tally function to count the number of votes for a single candidate
 def Vote_Tally(candidate):
     Candidate_Votes = 0             # Initialize variable for number of candidate votes
-    candidate = Candidates[x]       # Set candidate to be equal to candidate in list.  Applicable in a for loop.
+    # candidate = Cand       # Set candidate to be equal to candidate in list.  Applicable in a for loop.
     for row in election_csv:        # Search for candidate's number of occurrences in the CSV. 
-        if row[2] == Candidates[x]:         # Increase the # of candidate votes if candidates' name is found
+        if row[2] == candidate:         # Increase the # of candidate votes if candidates' name is found
             Candidate_Votes = Candidate_Votes + 1
     y = Candidate_Votes             # Set value for dictionary
     Final_Count.update([(candidate, y)])    # Append key:value to dictionary, where candidate's name is the key and candidate votes is the value
-
+    return Final_Count
+    # Candidate_Votes = 0
 
 # Read CSV
 with open(csvpath, newline="") as csvfile:
@@ -53,8 +43,8 @@ with open(csvpath, newline="") as csvfile:
 
     # print(Vote_Tally(Candidates[0]))
 
-for x in range(0, Num_Cand):
-    Cand = Candidates[x]
+# for x in range(0, Num_Cand):
+#     Cand = Candidates[x]
 
 # Read CSV
 with open(csvpath, newline="") as csvfile:
@@ -71,11 +61,19 @@ with open(csvpath, newline="") as csvfile:
     
     # Count votes for each candidate.  Loop through each candidate
     for x in range(0, Num_Cand):
-        candidate = Candidates[x]
-        count = Vote_Tally(Candidates[x])
+        Cand = Candidates[x]
+        count = Vote_Tally(Cand)
+       
         # Final_Count.update( = count)
+        # y = Candidate_Votes             # Set value for dictionary
+        # Final_Count.update([(candidate, count)])    # Append key:value to dictionary, where candidate's name is the key and candidate votes is the value
 
-### NOTE:  The function above only calculates for Candidate 0.  Need to debug to get it through the loop.
+    # Khan = Vote_Tally("Khan")
+    # Correy = Vote_Tally("Correy")
+    # Li = Vote_Tally("Li")
+
+
+### NOTE:  The function above only calculates for Candidate 0.  Need to debug to get it through the
 
 print(f"Total Votes = {Total_Votes}")
 print(Candidates)
