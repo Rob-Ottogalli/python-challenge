@@ -8,10 +8,9 @@ csvpath = os.path.join('Resources', 'election_test.csv')
 Total_Votes = 0
 Candidates = []
 Final_Count = {}
-Candidate_Votes = 0
 
 # Vote Tally function to count the number of votes for a single candidate
-# "candiate" in the input of the function will be the candidate's name
+# "candidate" in the input of the function will be the candidate's name
 def Vote_Tally(candidate):
     # Read CSV
     with open(csvpath, newline="") as csvfile:
@@ -28,38 +27,56 @@ def Vote_Tally(candidate):
         Final_Count.update([(candidate, y)])            # Append key:value to dictionary, where candidate's name is the key and candidate votes is the value
         return Final_Count                              # Return updated dictionary, with new candidate/vote counts added
 
+def Total_Votes_Counter():
+    # Read CSV
+    with open(csvpath, newline="") as csvfile:
+        election_csv = csv.reader(csvfile, delimiter=",")
+        # skip headers
+        header = next(election_csv)
 
-# Read CSV
-with open(csvpath, newline="") as csvfile:
-    election_csv = csv.reader(csvfile, delimiter=",")
-    # skip headers
-    header = next(election_csv)
+        # Initialize variable
+        Total_Votes = 0
+        # Loop through data 
+        # FIND TOTAL VOTES
+        for row in election_csv:
+            # Find total number of votes
+            if row[0] != 0:
+                Total_Votes = Total_Votes + 1
+        return Total_Votes
 
-    # Loop through data 
-    for row in election_csv:
-        # Find total number of votes
-        if row[0] != 0:
-            Total_Votes = Total_Votes + 1
+def Unique_Candidates():
+    # Read CSV
+    with open(csvpath, newline="") as csvfile:
+        election_csv = csv.reader(csvfile, delimiter=",")
+        # skip headers
+        header = next(election_csv)
 
         # Find unique Candidates.  Append to list
-        if str(row[2]) not in Candidates:
-            Candidates.append(str(row[2])) 
+        for row in election_csv:
+            if str(row[2]) not in Candidates:
+                Candidates.append(str(row[2])) 
+        return Candidates
 
-    # Find number of Candidates
-    Num_Cand = len(Candidates)
+def Loop_Candidates():
+    # Read CSV
+    with open(csvpath, newline="") as csvfile:
+        election_csv = csv.reader(csvfile, delimiter=",")
+        # skip headers
+        header = next(election_csv)
 
-    # Count votes for each candidate.  Loop through each candidate
-    for x in range(0, Num_Cand):
-        Cand = Candidates[x]
-        count = Vote_Tally(Cand)
-    # print(Vote_Tally(Candidates[0]))
+        # Find number of Candidates
+        Num_Cand = len(Candidates)
 
-# for x in range(0, Num_Cand):
-#     Cand = Candidates[x]
+        # Count votes for each candidate.  Loop through each candidate
+        for x in range(0, Num_Cand):
+            Cand = Candidates[x]
+            count = Vote_Tally(Cand)
+        return count
 
-        # Final_Count.update( = count)
-        # y = Candidate_Votes             # Set value for dictionary
-        # Final_Count.update([(candidate, count)])    # Append key:value to dictionary, where candidate's name is the key and candidate votes is the value
+Total_Votes = Total_Votes_Counter()
+Candidates = Unique_Candidates()
+Num_Cand = len(Candidates)
+Final_Count = Loop_Candidates()
 
 
 ### NOTE:  The function above only calculates for Candidate 0.  Need to debug to get it through the
