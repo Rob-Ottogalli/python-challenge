@@ -8,8 +8,9 @@ csvpath = os.path.join('Resources', 'election_test.csv')
 Total_Votes = 0
 Candidates = []
 Final_Count = {}
+Final_Percents = {}
 
-# Vote Tally function to count the number of votes for a single candidate
+# Vote Tally function to count the number of votes cast for a single candidate
 # "candidate" in the input of the function will be the candidate's name
 def Vote_Tally(candidate):
     # Read CSV
@@ -27,6 +28,7 @@ def Vote_Tally(candidate):
         Final_Count.update([(candidate, y)])            # Append key:value to dictionary, where candidate's name is the key and candidate votes is the value
         return Final_Count                              # Return updated dictionary, with new candidate/vote counts added
 
+# Find the total number of votes cast
 def Total_Votes_Counter():
     # Read CSV
     with open(csvpath, newline="") as csvfile:
@@ -44,6 +46,7 @@ def Total_Votes_Counter():
                 Total_Votes = Total_Votes + 1
         return Total_Votes
 
+# Find the unique candidates
 def Unique_Candidates():
     # Read CSV
     with open(csvpath, newline="") as csvfile:
@@ -57,7 +60,8 @@ def Unique_Candidates():
                 Candidates.append(str(row[2])) 
         return Candidates
 
-def Loop_Candidates():
+# Loop through each candidate's name to find votes cast for all candidates
+def Loop_Vote_Tally():
     # Read CSV
     with open(csvpath, newline="") as csvfile:
         election_csv = csv.reader(csvfile, delimiter=",")
@@ -73,10 +77,36 @@ def Loop_Candidates():
             count = Vote_Tally(Cand)
         return count
 
+
+def Loop_Percent_Tally():
+    # Find number of Candidates
+    Num_Cand = len(Candidates)
+
+    Final_Count = {}
+    Final_Count = Loop_Vote_Tally()
+
+    # Sort dictionary by values
+    # Final_Count = sorted(Final_Count.values())
+
+    # Find percent of votes for each candidate.  Loop through each candidate
+    # for k,v in Final_Count.items():
+
+
+    for x in range(0, Num_Cand):
+        Cand = Candidates[x]
+        j = Cand
+        Percent_Vote = Final_Count[j] /Total_Votes * 100
+        y = Percent_Vote
+        Final_Percents.update([(j,y)])
+    return Final_Percents
+
+
+
 Total_Votes = Total_Votes_Counter()
 Candidates = Unique_Candidates()
 Num_Cand = len(Candidates)
-Final_Count = Loop_Candidates()
+Final_Count = Loop_Vote_Tally()
+Final_Percents = Loop_Percent_Tally()
 
 
 ### NOTE:  The function above only calculates for Candidate 0.  Need to debug to get it through the
@@ -85,3 +115,4 @@ print(f"Total Votes = {Total_Votes}")
 print(Candidates)
 print(f"Number of Candidates: {Num_Cand}")
 print(Final_Count)
+print(Final_Percents)
