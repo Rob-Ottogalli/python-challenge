@@ -2,7 +2,7 @@ import os
 import csv
 
 # Path to collect data from the Resources folder
-csvpath = os.path.join('Resources', 'election_test.csv')
+csvpath = os.path.join('Resources', 'election_data.csv')
 
 # Initialize variables to hold data
 Total_Votes = 0
@@ -96,7 +96,7 @@ def Loop_Percent_Tally():
         Cand = Candidates[x]
         j = Cand
         Percent_Vote = Final_Count[j] /Total_Votes * 100
-        y = Percent_Vote
+        y = round(Percent_Vote, 4)
         Final_Percents.update([(j,y)])
     return Final_Percents
 
@@ -108,11 +108,45 @@ Num_Cand = len(Candidates)
 Final_Count = Loop_Vote_Tally()
 Final_Percents = Loop_Percent_Tally()
 
+# Determine Winner
+Winning_Total = max(Final_Percents.values())
+Winner = [k for k, v in Final_Percents.items() if v == Winning_Total]
 
-### NOTE:  The function above only calculates for Candidate 0.  Need to debug to get it through the
 
-print(f"Total Votes = {Total_Votes}")
-print(Candidates)
-print(f"Number of Candidates: {Num_Cand}")
-print(Final_Count)
-print(Final_Percents)
+#####################################
+# GENERATE REPORT
+#####################################
+
+# Use 
+Report_Header = "Election Results"
+Dash = "----------------------------"
+Report_Total_Votes = f"Total Votes: {Total_Votes}"
+Report_Winner = f"Winner: {Winner}"
+
+# Print to Terminal
+print(Report_Header)
+print(Dash)
+print(Report_Total_Votes)
+print(Dash)
+# Loop through Candidate data
+for k,v in Final_Percents.items():
+    print(f"{k}: {v}% ({Final_Count[k]})")
+print(Dash)
+print(Report_Winner)
+print(Dash)
+
+# Write report to txt file
+with open("Election Results.txt", "w") as csvwrite:
+    csvwrite.write(
+        f"{Report_Header}\n"
+        f"{Dash}\n"
+        f"{Report_Total_Votes}\n"
+        f"{Dash}\n"
+        )
+    for k,v in Final_Percents.items():
+        csvwrite.write(f"{k}: {v}% ({Final_Count[k]})\n")
+    csvwrite.write(
+        f"{Dash}\n"
+        f"{Report_Winner}\n"
+        f"{Dash}\n"
+    )
